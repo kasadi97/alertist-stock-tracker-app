@@ -12,15 +12,15 @@ import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { LogOut } from "lucide-react";
 import NavItems from "./NavItems";
-const UserDropdown = () => {
+import { signOut } from "@/lib/actions/authActions";
+
+const UserDropdown = ({user}:{user:User}) => {
     const router = useRouter();
-    const handleSignOut = () => {
-        // Perform sign-out logic here (e.g., clear auth tokens, update state)
-        // After signing out, redirect to the homepage
+    const handleSignOut = async () => {
+        await signOut();
         router.push('/sign-in');
     }
 
-    const user = {name: 'John', email: 'test@gmail.com'}; // Replace with actual user data
   return (
     <DropdownMenu>
         <DropdownMenuTrigger asChild>
